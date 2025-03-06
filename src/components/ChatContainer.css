@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 .chat-container {
-    max-height: 400px; /* Set a proper height for scrolling */
+    max-height: 500px; /* Set a proper height for scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
   
     scroll-behavior: smooth; /* Smooth scrolling */
