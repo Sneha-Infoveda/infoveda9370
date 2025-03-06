@@ -205,7 +205,7 @@
         margin: 0 5px;
         max-width: 100%;
         top: 80px;
-        max-height: 600px;     /* Allow container to take full width */
+        max-height: 500px;     /* Allow container to take full width */
     }
     
     .chat-messages-wrapper {
@@ -242,21 +242,21 @@
     max-width: 100%;
     position: relative;
     top: 80px;
-    height: 80vh; /* Default for most screens */
-    max-height: 600px; /* Ensure it does not exceed 700px */
+    height: 70vh; /* Default for most screens */
+    max-height: 500px; /* Ensure it does not exceed 700px */
 }
 
 @media screen and (max-height: 700px) {
     .chat-container {
-        height: 90vh; /* Increase height for smaller screens */
-        max-height: 500px; /* Cap height for Samsung Galaxy */
+        height: 80vh; /* Increase height for smaller screens */
+        max-height: 400px; /* Cap height for Samsung Galaxy */
     }
 }
 
 @media screen and (max-height: 530px) {
     .chat-container {
         height: 95vh; /* Adjust height for very small screens */
-        max-height: 450px; /* Slightly smaller to fit within viewport */
+        max-height: 400px; /* Slightly smaller to fit within viewport */
     }
 }
 @media (max-width: 768px) {
@@ -264,7 +264,7 @@
         height: 60vh;
         width: 90%;
         padding: 15px;
-        height: calc(90vh - 100px); /* Adjust height dynamically for small screens */
+        height: calc(80vh - 90px); /* Adjust height dynamically for small screens */
     }
     
     
