@@ -210,7 +210,7 @@
         margin: 0 5px;
         max-width: 100%;
         top: 80px;
-        max-height: 700px;     /* Allow container to take full width */
+        max-height: 650px;     /* Allow container to take full width */
     }
     
     .chat-messages-wrapper {
@@ -238,5 +238,29 @@
     .message-sender {
         font-size: 14px;     /* Smaller font for sender names */
         gap: 5px;            /* Reduce gap between sender elements */
+    }
+}
+
+.chat-container {
+    padding: 5px;
+    margin: 0 5px;
+    max-width: 100%;
+    position: relative;
+    top: 80px;
+    height: 80vh; /* Default for most screens */
+    max-height: 700px; /* Ensure it does not exceed 700px */
+}
+
+@media screen and (max-height: 700px) {
+    .chat-container {
+        height: 90vh; /* Increase height for smaller screens */
+        max-height: 530px; /* Cap height for Samsung Galaxy */
+    }
+}
+
+@media screen and (max-height: 530px) {
+    .chat-container {
+        height: 95vh; /* Adjust height for very small screens */
+        max-height: 500px; /* Slightly smaller to fit within viewport */
     }
 }
