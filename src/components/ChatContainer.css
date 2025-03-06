@@ -182,6 +182,7 @@
 }
 
 
+
 @media (min-width: 1024px) {
     .message-sender {
         display: flex;
@@ -197,5 +198,43 @@
     .chat-container {
         max-width: 1000px; /* Ensure chat container fits well on laptop screens */
         padding: 20px; /* Adjust padding */
+    }
+}
+
+
+/* Media Query for Smaller Screens (e.g. below 480px) */
+@media screen and (max-width: 480px) {
+    .chat-container {
+        padding: 5px;        /* Reduce padding */
+        top: 60px;           /* Adjust top offset if needed */
+        margin: 0 5px;       /* Add a little horizontal margin */
+        max-width: 100%;     /* Allow container to take full width */
+    }
+    
+    .chat-messages-wrapper {
+        padding: 5px;        /* Slightly reduce inner spacing */
+    }
+
+    .chat-message {
+        max-width: 90%;      /* Allow messages to take more width on small screens */
+        margin: 5px 0;       /* Reduce vertical spacing */
+        font-size: 14px;     /* Slightly reduce font size if desired */
+    }
+    
+    .message-bubble {
+        padding: 8px;        /* Reduce padding inside message bubbles */
+        border-radius: 8px;  /* Adjust border radius if needed */
+        margin-top: -10px;   /* Adjust top margin */
+    }
+    
+    .followup-questions button {
+        padding: 6px 10px;   /* Adjust button padding */
+        font-size: 14px;     /* Reduce button text size */
+    }
+    
+    /* Optional: Adjust sender label font-size and spacing */
+    .message-sender {
+        font-size: 14px;     /* Smaller font for sender names */
+        gap: 5px;            /* Reduce gap between sender elements */
     }
 }
