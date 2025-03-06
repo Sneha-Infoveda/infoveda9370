@@ -210,7 +210,7 @@
         margin: 0 5px;
         max-width: 100%;
         top: 80px;
-        max-height: 720px;     /* Allow container to take full width */
+        max-height: 700px;     /* Allow container to take full width */
     }
     
     .chat-messages-wrapper {
