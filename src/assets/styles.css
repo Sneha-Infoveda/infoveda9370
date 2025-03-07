@@ -1,6 +1,7 @@
 /* Reset Styles now inser google fonts  */ 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari&display=swap');
 
+
 body {
     font-family: 'Noto Serif Devanagari', serif;
 }
@@ -452,6 +453,8 @@ header {
     /* margin-left: 250px;  */
     padding: 20px;
     width: calc(100% - 250px);
+   
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 
@@ -488,6 +491,7 @@ header {
     box-sizing: border-box;
     gap: 15px;
     height: 90px;
+    border-bottom: 1px solid #ddd;
 }
 
 
