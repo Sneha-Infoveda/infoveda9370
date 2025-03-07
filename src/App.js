@@ -7,6 +7,7 @@ import './assets/styles.css';    // Your global styles
 import './assets/panel.css';     // Your sidebar panel styles
 
 function App() {
+    const [query, setQuery] = useState("");
     const [chatHistory, setChatHistory] = useState([]);   // Stores the conversation
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar open/close
     const [showWelcome, setShowWelcome] = useState(true); // Controls welcome message
@@ -112,11 +113,14 @@ function App() {
             {/* Main content area (SearchBar + ChatContainer) */}
             <div className="main-content" onClick={handleContentClick}>
                 <SearchBar
-                    // SearchBar can also call sendMessage directly
-                    sendMessage={sendMessage}
+                    query={query}
+                    setQuery={setQuery}
+                    setChatHistory={setChatHistory}
                     language={language}
                     setLanguage={setLanguage}
+                    setIsGenerating={setIsGenerating}
                 />
+
                 <ChatContainer
                     chatHistory={chatHistory}
                     isGenerating={isGenerating}
