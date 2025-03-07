@@ -41,7 +41,7 @@
 .chat-message.user {
     background-color: #e1f5fe;
     align-self: flex-start;
-    margin-top: 75px;
+    /* margin-top: 75px; */
 }
 
 /* Bot Message */
@@ -93,8 +93,9 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .chat-container {
-        height: calc(100vh - 140px);
+        height: calc(95vh - 140px);
         width: 95%;
+        top: 60px;
     }
 
     .chat-message {
