@@ -6,7 +6,7 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 10px 15px; /* Reduced left & right padding */
+    padding: 10px;
     height: calc(100vh - 120px); /* Dynamic height based on viewport */
     max-height: 100vh; /* Allow it to fill the screen */
     overflow-y: auto; /* Enable scrolling */
@@ -14,16 +14,17 @@
     box-sizing: border-box;
 }
 
+/* Ensure messages appear at the bottom */
 .chat-messages-wrapper {
     width: 100%;
-    flex-grow: 1;
+    flex-grow: 1; /* Takes remaining space */
     overflow-y: auto;
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
-    flex-direction: column-reverse; /* Show latest message at the bottom */
+    flex-direction: column;
+    justify-content: flex-end; /* Ensures messages appear at the bottom */
     scrollbar-width: thin;
 }
-
 
 /* Bot & User Message Styling */
 .chat-message {
@@ -33,26 +34,20 @@
     margin: 10px 0;
     padding: 12px;
     border-radius: 10px;
-    text-align: justify; /* Justify text */
+    text-align: left;
 }
 
 /* User Message */
 .chat-message.user {
     background-color: #e1f5fe;
     align-self: flex-start;
-    padding: 8px 12px; /* Reduce padding for better spacing */
-    text-align: left;
-    max-width: 70%; /* Limit width to avoid stretching */
-    word-wrap: break-word; /* Ensure long words don’t overflow */
-    border-radius: 8px;
+    margin-top: 75px;
 }
 
 /* Bot Message */
 .chat-message.bot {
     background-color: #fff;
     align-self: flex-start;
-    padding: 10px;
-    text-align: justify; /* Justify text */
 }
 
 /* "Generating Answer..." Visibility */
@@ -65,7 +60,6 @@
     padding-left: 10px;
 }
 
-/* Follow-up Questions */
 .followup-questions {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
@@ -87,6 +81,7 @@
 
 /* 🔥 When hovering over the button, change color and add glow effect */
 .followup-questions button:hover {
+   
     color: blue; /* Change text color */
     box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.8); /* Add glowing effect */
 }
@@ -95,37 +90,14 @@
 .followup-questions button:active {
     color: #0056b3;
 }
-
-/* 📱 Mobile Responsive Fix */
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .chat-container {
-        height: calc(100vh - 100px);
+        height: calc(100vh - 140px);
         width: 95%;
-        padding: 5px 10px;
     }
 
     .chat-message {
-        max-width: 100%;
-    }
-
-    .chat-messages-wrapper {
-        padding: 0 5px;
+        max-width: 90%;
     }
 }
-
-/* 📱 Reduce height for very small screens */
-@media screen and (max-height: 530px) {
-    .chat-container {
-        height: 95vh;
-        max-height: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .chat-message.user {
-        max-width: 80%; /* Slightly wider for mobile */
-        padding: 6px 10px; /* Less padding to save space */
-        margin-top: 75px;
-    }
-}
-
