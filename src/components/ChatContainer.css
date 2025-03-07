@@ -92,6 +92,12 @@
 .followup-questions button:active {
     color: #0056b3;
 }
+
+/* In ChatContainer.css or your global styles */
+.chat-message.bot .message-sender {
+    font-weight: bold;
+  }
+  
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .chat-container {
@@ -101,7 +107,7 @@
     }
 
     .chat-message {
-        max-width: 90%;
+        max-width: 95%;
     }
 }
 
@@ -111,4 +117,24 @@
         height: calc(90vh - env(safe-area-inset-bottom) - 140px);
         padding-bottom: env(safe-area-inset-bottom);
     }
+}
+
+@media only screen
+  and (device-width: 393px)
+  and (device-height: 852px)
+  and (-webkit-device-pixel-ratio: 3) {
+  
+  /* Example: Adjust chat container styles for iPhone 15 Pro */
+  .chat-container {
+    /* Put your custom styles here */
+    /* For instance: */
+    max-height: 80vh;   /* or something that fits your layout */
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+  /* You can also style other elements if needed */
+  .some-other-class {
+    font-size: 0.95rem;
+  }
 }

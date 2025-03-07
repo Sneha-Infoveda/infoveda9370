@@ -5,9 +5,10 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
     const [loading, setLoading] = useState(false);
 
     const handleSearch = async () => {
-        if (!query.trim()) return;
+        // Ensure query is defined and not just whitespace
+        if (!query || !query.trim()) return;
         setLoading(true);
-        setIsGenerating(true);  // ✅ Show "Generating answer..." in ChatContainer
+        setIsGenerating(true);  // Show "Generating answer..." in ChatContainer
 
         // Add user message to chat history
         setChatHistory(prevChat => [
@@ -35,7 +36,7 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
             console.error("Error fetching response:", error);
         } finally {
             setLoading(false);
-            setIsGenerating(false);  // ✅ Hide "Generating answer..." when response arrives
+            setIsGenerating(false);  // Hide "Generating answer..." when response arrives
         }
     };
 
@@ -48,14 +49,14 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
 
     return (
         <div className="search-bar">
-            {<input 
-                type="text" 
-                value={query} 
-                onChange={(e) => setQuery(e.target.value)} 
+            <input 
+                type="text"
+                value={query || ""}  // Default to empty string if query is undefined
+                onChange={(e) => setQuery(e.target.value)}
                 onKeyPress={handleKeyPress} // Detect Enter key
                 placeholder="Ask anything..."
                 disabled={loading}
-            /> }
+            />
             
             <button onClick={handleSearch} disabled={loading}>
                 {loading ? ". . ." : <i className="fas fa-paper-plane"></i>}

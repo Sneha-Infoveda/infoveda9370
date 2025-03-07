@@ -14,7 +14,6 @@ const Navbar = ({ onSearch }) => {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Close dropdown when clicking outside (for mobile)
     useEffect(() => {
         function handleClickOutside(event) {
             if (navRef.current && !navRef.current.contains(event.target)) {
@@ -33,10 +32,15 @@ const Navbar = ({ onSearch }) => {
         };
     }, [isMobile]);
 
-    const handleItemClick = (topic) => {
-        onSearch(topic);  // 🔥 Immediately trigger search in ChatContainer
+    // ✅ Handle clicking on a topic → Directly send query
+    const handleItemClick = (query) => {
+        if (typeof onSearch === "function") {  // ✅ Ensure it's a function
+            onSearch(query);
+        } else {
+            console.error("onSearch is not defined or not a function!");
+        }
         if (isMobile) {
-            setOpenDropdown(null);
+            setOpenDropdown(null); // Close dropdown on mobile
         }
     };
 
@@ -51,6 +55,7 @@ const Navbar = ({ onSearch }) => {
                     <img src="/logocropped.jpg" alt="ChatVeda AI Logo" className="logo" />
                 </div>
                 <ul className="nav-menu">
+                    {/* Education Dropdown */}
                     <li 
                         className="nav-item"
                         onMouseEnter={!isMobile ? () => setOpenDropdown('education') : null}
@@ -61,7 +66,7 @@ const Navbar = ({ onSearch }) => {
                         </button>
                         {openDropdown === 'education' && (
                             <ul className="dropdown">
-                                <li><button onClick={() => handleItemClick('Atharvaveda')}>Atharvaveda</button></li>
+                                <li><button onClick={() => handleItemClick('Atharveda')}>Atharveda</button></li>
                                 <li><button onClick={() => handleItemClick('Samveda')}>Samveda</button></li>
                                 <li><button onClick={() => handleItemClick('Yajurveda')}>Yajurveda</button></li>
                                 <li><button onClick={() => handleItemClick('Rigveda')}>Rigveda</button></li>
@@ -103,7 +108,7 @@ const Navbar = ({ onSearch }) => {
                         {openDropdown === 'history' && (
                             <ul className="dropdown">
                                 <li><button onClick={() => handleItemClick('Ramayana')}>Ramayana</button></li>
-                                <li><button onClick={() => handleItemClick('Mahabharata')}>Mahabharata</button></li>
+                                <li><button onClick={() => handleItemClick('Mahabharta')}>Mahabharta</button></li>
                             </ul>
                         )}
                     </li>
