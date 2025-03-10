@@ -43,7 +43,7 @@
 .chat-message.user {
     background-color: #e1f5fe;
     align-self: flex-start;
-    /* margin-top: 75px; */
+    margin-top: 75px;
 }
 
 /* Bot Message */
@@ -107,7 +107,7 @@
     }
 
     .chat-message {
-        max-width: 95%;
+        max-width: 200%;
     }
 }
 
@@ -137,4 +137,45 @@
   .some-other-class {
     font-size: 0.95rem;
   }
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        height: 60vh;
+        width: 90%;
+        padding: 15px;
+        height: calc(93vh - 120px); /* Adjust height dynamically for small screens */
+    }
+    
+    .message {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+.voice-assistant-wrapper {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.voice-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voice-btn:hover {
+    background-color: #0056b3;
+}
+
+.voice-btn:active {
+    background-color: #003d80;
 }
