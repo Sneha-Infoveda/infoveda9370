@@ -3,7 +3,6 @@ import './SearchBar.css';
 
 const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, setIsGenerating }) => {
     const [loading, setLoading] = useState(false);
-    const [isRecording, setIsRecording] = useState(false); // Track recording state
 
     const handleSearch = async () => {
         // Ensure query is defined and not just whitespace
@@ -48,41 +47,6 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
         }
     };
 
-    // Handle voice input using Web Speech API
-    const handleVoiceInput = () => {
-        if (!('webkitSpeechRecognition' in window)) {
-            alert('Sorry, your browser does not support speech recognition.');
-            return;
-        }
-
-        const recognition = new window.webkitSpeechRecognition();
-        recognition.lang = language === "hi" ? "hi-IN" : language === "mr" ? "mr-IN" : "en-US";
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognition.onstart = () => {
-            setIsRecording(true);
-        };
-
-        recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            setQuery(transcript);
-            handleSearch();  // Automatically search after recording
-            setIsRecording(false);
-        };
-
-        recognition.onerror = (event) => {
-            console.error("Speech recognition error:", event.error);
-            setIsRecording(false);
-        };
-
-        recognition.onend = () => {
-            setIsRecording(false);
-        };
-
-        recognition.start();
-    };
-
     return (
         <div className="search-bar">
             <input 
@@ -93,21 +57,7 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
                 placeholder="Ask anything..."
                 disabled={loading}
             />
-
-            {/* Voice Input Button */}
-            <button 
-                onClick={handleVoiceInput} 
-                className={`voice-button ${isRecording ? 'recording' : ''}`}
-                title={isRecording ? "Recording..." : "Click to speak"}
-            >
-                {isRecording ? (
-                    <i className="fas fa-microphone-slash"></i>
-                ) : (
-                    <i className="fas fa-microphone"></i>
-                )}
-            </button>
-
-            {/* Search Button */}
+            
             <button onClick={handleSearch} disabled={loading}>
                 {loading ? ". . ." : <i className="fas fa-paper-plane"></i>}
             </button>

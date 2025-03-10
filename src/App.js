@@ -22,16 +22,6 @@ function App() {
     }, [chatHistory]);
 
     /**
-     * handleSpeechOutput: Uses Web Speech API to convert text to speech
-     */
-    const handleSpeechOutput = (message) => {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(message);
-        utterance.lang = "en-US";
-        synth.speak(utterance);
-    };
-
-    /**
      * sendMessage: Appends a user message to chatHistory, then calls the server
      * for a response and appends the response to chatHistory as well.
      */
@@ -73,10 +63,6 @@ function App() {
                     followUpQuestions: data.follow_up_questions || []
                 }
             ]);
-
-            // 5) Voice output of the response
-            handleSpeechOutput(data.response);
-
         } catch (error) {
             console.error("Error fetching response:", error);
             // Optionally display the error in the chat
@@ -129,7 +115,7 @@ function App() {
                 <SearchBar
                     query={query}
                     setQuery={setQuery}
-                    sendMessage={sendMessage}
+                    setChatHistory={setChatHistory}
                     language={language}
                     setLanguage={setLanguage}
                     setIsGenerating={setIsGenerating}
