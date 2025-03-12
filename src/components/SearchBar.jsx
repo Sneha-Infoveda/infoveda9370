@@ -44,8 +44,14 @@ const SearchBar = ({ query, setQuery, setChatHistory, language, setLanguage, set
             // Add bot response to chat history
             setChatHistory(prevChat => [
                 ...prevChat,
-                { text: data.response, isUser: false, followUpQuestions: data.follow_up_questions || [] }
+                { 
+                    text: data.response, 
+                    isUser: false, 
+                    followUpQuestions: data.follow_up_questions || [],
+                    speakable: true  // Mark the response as speakable
+                }
             ]);
+            
 
             setQuery("");
         } catch (error) {

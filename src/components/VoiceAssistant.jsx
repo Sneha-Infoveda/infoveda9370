@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaMicrophone, FaStop } from "react-icons/fa";
+import { FaVolumeUp, FaStop } from "react-icons/fa";  // Changed icon to speaker
 
 function VoiceAssistant({ textToRead }) {
     const [isReading, setIsReading] = useState(false);
@@ -67,7 +67,7 @@ function VoiceAssistant({ textToRead }) {
 
     return (
         <button onClick={toggleReading} className={`voice-btn ${isReading ? "active" : ""}`}>
-            {isReading ? <FaStop size={24} /> : <FaMicrophone size={24} />}
+            {isReading ? <FaStop size={24} /> : <FaVolumeUp size={24} />}  {/* Changed to speaker icon */}
         </button>
     );
 }
