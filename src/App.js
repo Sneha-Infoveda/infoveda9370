@@ -6,8 +6,6 @@ import ChatContainer from './components/ChatContainer';
 import './assets/styles.css';    // Your global styles
 import './assets/panel.css';     // Your sidebar panel styles
 
-
-
 function App() {
     const [query, setQuery] = useState("");
     const [chatHistory, setChatHistory] = useState([]);   // Stores the conversation
@@ -22,16 +20,6 @@ function App() {
             setShowWelcome(false);
         }
     }, [chatHistory]);
-
-    /**
-     * handleSpeechOutput: Uses Web Speech API to convert text to speech
-     */
-    const handleSpeechOutput = (message) => {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(message);
-        utterance.lang = "en-US";
-        synth.speak(utterance);
-    };
 
     /**
      * sendMessage: Appends a user message to chatHistory, then calls the server
@@ -75,10 +63,6 @@ function App() {
                     followUpQuestions: data.follow_up_questions || []
                 }
             ]);
-
-            // 5) Voice output of the response
-            handleSpeechOutput(data.response);
-
         } catch (error) {
             console.error("Error fetching response:", error);
             // Optionally display the error in the chat
@@ -131,10 +115,7 @@ function App() {
                 <SearchBar
                     query={query}
                     setQuery={setQuery}
-                    sendMessage={sendMessage}
-                    chatHistory={chatHistory}        // Add this line
-                    setChatHistory={setChatHistory}  // Add this line
-                    
+                    setChatHistory={setChatHistory}
                     language={language}
                     setLanguage={setLanguage}
                     setIsGenerating={setIsGenerating}
