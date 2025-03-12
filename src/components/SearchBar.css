@@ -23,8 +23,8 @@
 }
 
 .search-bar button {
-    background-color: #007bff;
-    color: white;
+    /* background-color: #007bff; */
+    color: black;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -38,18 +38,36 @@
 
 /* Style for Language Dropdown */
 .search-bar select {
-    padding: 10px;
-    font-size: 16px;
+    padding: 5px;
+    font-size: 10px;  /* Reduced font size */
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 30px;  /* Reduced border radius */
     background-color: white;
     cursor: pointer;
     outline: none;
-    height: 50px;
+    height: 30px;  /* Reduced height */
 }
 
 /* Hover & Focus Effects */
-.search-bar select:hover,
+/* .search-bar select:hover,
 .search-bar select:focus {
     border-color: #007bff;
+} */
+
+/* Style for Microphone and Search Icons */
+.voice-btn, .search-btn {
+    background: none;  /* Remove background */
+    border: none;  /* No border */
+    outline: none;  /* No outline */
+    cursor: pointer;
+    padding: 0;  /* No padding */
 }
+
+.voice-btn svg, .search-btn svg {
+    width: 24px;  /* Adjust icon size */
+    height: 24px;
+  
+}
+
+
+
